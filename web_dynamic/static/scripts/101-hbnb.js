@@ -1,5 +1,5 @@
 window.addEventListener('load', function () {
-  // task 3
+  // Get API status
   $.ajax('http://0.0.0.0:5001/api/v1/status').done(function (data) {
     if (data.status === 'OK') {
       $('#api_status').addClass('available');
@@ -8,7 +8,7 @@ window.addEventListener('load', function () {
     }
   });
 
-  // task 2
+  // Based on 1-hbnb.js
   const amenityIds = {};
   $('.amenities input[type=checkbox]').click(function () {
     if ($(this).prop('checked')) {
@@ -25,7 +25,8 @@ window.addEventListener('load', function () {
 
   const stateIds = {};
   const cityIds = {};
-  // task 4
+
+  // Fetch data from places
   $('.filters button').click(function () {
     $.ajax({
       type: 'POST',
@@ -81,7 +82,7 @@ window.addEventListener('load', function () {
 	</article> <!-- End 1 PLACE Article -->`;
         $('section.places').append(template);
       }
-      // Task 7: get reviews for each place (add to the places post request for loop?)
+      // get reviews for each place
       $('.reviewSpan').click(function (event) {
         $.ajax('http://0.0.0.0:5001/api/v1/places/' + $(this).attr('data-id') + '/reviews').done(function (data) {
 //          console.log($(this).text());
@@ -104,7 +105,7 @@ window.addEventListener('load', function () {
     });
   });
 
-  // task 6
+  // Based on 4-hbnb.js
   $('.stateCheckBox').click(function () {
     if ($(this).prop('checked')) {
       stateIds[$(this).attr('data-id')] = $(this).attr('data-name');
