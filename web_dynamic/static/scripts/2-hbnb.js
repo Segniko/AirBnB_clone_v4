@@ -1,5 +1,5 @@
 window.addEventListener('load', function () {
-  // task 3
+  // get API status
   $.ajax('http://0.0.0.0:5001/api/v1/status').done(function (data) {
     if (data.status === 'OK') {
       $('#api_status').addClass('available');
@@ -8,18 +8,18 @@ window.addEventListener('load', function () {
     }
   });
 
-  // task 2
-  const amenityIds = {};
+  // Based on 1-hbnb.js
+  const amenityId = {};
   $('input[type=checkbox]').click(function () {
     if ($(this).prop('checked')) {
-      amenityIds[$(this).attr('data-id')] = $(this).attr('data-name');
+      amenityId[$(this).attr('data-id')] = $(this).attr('data-name');
     } else if (!$(this).prop('checked')) {
-      delete amenityIds[$(this).attr('data-id')];
+      delete amenityId[$(this).attr('data-id')];
     }
-    if (Object.keys(amenityIds).length === 0) {
+    if (Object.keys(amenityId).length === 0) {
       $('div.amenities h4').html('&nbsp');
     } else {
-      $('div.amenities h4').text(Object.values(amenityIds).join(', '));
+      $('div.amenities h4').text(Object.values(amenityId).join(', '));
     }
   });
 });

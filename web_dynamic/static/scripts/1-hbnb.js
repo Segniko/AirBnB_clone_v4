@@ -1,5 +1,5 @@
 window.addEventListener('load', function () {
-  // script mus be excuted only when DOM is loaded
+  // script must be excuted only when DOM is loaded
   const amenityId = {};
   $('input[type=checkbox]').change(function () {
     if ($(this).prop('checked')) {
