@@ -1,16 +1,16 @@
 window.addEventListener('load', function () {
-  // task 2
-  const amenityIds = {};
+  // script mus be excuted only when DOM is loaded
+  const amenityId = {};
   $('input[type=checkbox]').change(function () {
     if ($(this).prop('checked')) {
-      amenityIds[$(this).attr('data-id')] = $(this).attr('data-name');
+      amenityId[$(this).attr('data-id')] = $(this).attr('data-name');
     } else if (!$(this).prop('checked')) {
-      delete amenityIds[$(this).attr('data-id')];
+      delete amenityId[$(this).attr('data-id')];
     }
-    if (Object.keys(amenityIds).length === 0) {
+    if (Object.keys(amenityId).length === 0) {
       $('div.amenities h4').html('&nbsp');
     } else {
-      $('div.amenities h4').text(Object.values(amenityIds).join(', '));
+      $('div.amenities h4').text(Object.values(amenityId).join(', '));
     }
   });
 });
